@@ -1,4 +1,16 @@
 import 'package:flutter/material.dart';
+import 'Screens/navigation.dart';
+import 'Screens/history.dart';
+import 'Screens/settings.dart';
+import 'Screens/notifications.dart';
+import 'Screens/addSubscription.dart';
+import 'Screens/homepage.dart';
+import 'Screens/onboarding.dart';
+import 'Screens/login.dart';
+import 'Screens/signup.dart';
+import 'constants.dart';
+import 'Screens/forgottenPassword.dart';
+import 'Screens/verificationSuccess.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +25,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Darker Grotesque',
+        textTheme: const TextTheme(
+          button: TextStyle(fontSize: 18),
+          headline2: TextStyle(fontSize: 35.0),
+          bodyText1: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w200, color: kGreenTextColor),
+          bodyText2: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w300, color: kGreenTextColor),
+        ),
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -24,7 +43,20 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: Onboarding.id,
+      routes: {
+        Onboarding.id: (context) => Onboarding(),
+        '/nav_page': (context) => Navigation(),
+        HomePage.id: (context) => HomePage(),
+        History.id: (context) => History(),
+        AddSubscription.id: (context) => AddSubscription(),
+        Notifications.id: (context) => Notifications(),
+        Settings.id: (context) => Settings(),
+        '/login_page': (context) => Login(),
+        '/signup_page': (context) => SignUp(),
+        '/forgotten_password_page': (context) => Forgotten_Password(),
+        '/verification_success_page': (context) => Verification_Page()
+      },
     );
   }
 }
